@@ -2,9 +2,15 @@ const { Pool } = require('pg');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 
+if (!process.env.DATABASE_URL) {
+    console.error('❌ CRITICAL: DATABASE_URL environment variable is missing!');
+}
+
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL || 'postgresql://postgres:atechprojects@localhost:5432/peso_guagua_portal',
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false // Supabase requires SSL
+    }
 });
 
 pool.on('connect', () => {
