@@ -5,8 +5,9 @@ const path = require('path');
 const app = express();
 
 // Enable CORS for frontend requests
+// Allow both your local environment and your live Vercel frontend
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://pesoprototype.vercel.app'],
     credentials: true
 }));
 
