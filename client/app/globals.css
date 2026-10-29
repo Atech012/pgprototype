@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+:root {
+  --municipal-navy: #0B1F3B;
+  --municipal-blue: #1E3A8A;
+  --municipal-emerald: #059669;
+  --municipal-light: #F8FAFC;
+}
